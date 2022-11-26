@@ -32,5 +32,3 @@ def insertCharacter():
 def perfil(idRM):
     character = db.characters.find_one({"idRM":int(idRM)})
     return render_template('profile.html', character = character)
-
-
