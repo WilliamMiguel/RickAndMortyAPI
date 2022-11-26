@@ -13,8 +13,8 @@ def index():
 
 @character.route('/insert')
 def insertCharacter():
-    for n in range (1,22):
-        url = "https://rickandmortyapi.com/api/character?page=" + str(n)
+    for page in range (1,22):
+        url = "https://rickandmortyapi.com/api/character?page=" + str(page)
         infoCharacter = requests.get(url).json()["results"]
         for info in infoCharacter:
             _id = info["id"]
