@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{character.name}}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card-image">
+        <img src="https://rickandmortyapi.com/api/character/avatar/{{character.idRM}}.jpeg" alt={{character.name}}">
+    </div>
+    <div class="info">
+        <h1 class="name">{{character.name}}</h1>
+
+        {% if character.status == "Dead" %}
+        <p>
+            <i class="fa-solid fa-circle" style="color: red; font-size: 10px;"></i> {{character.status}} -
+            {{character.species}}
+        </p>
+
+        {% else %}
+        <p>
+            <i class="fa-solid fa-circle" style="color: green; font-size: 10px;"></i> {{character.status}} -
+            {{character.species}}
+        </p>
+        {% endif %}
+
+
+        <br>
+        <p style="color: rgb(159, 158, 158);">Last know location</p>
+        <p style="font-size: 1.5em;">{{character.location}}</p> <br><br>
+        <p><button><a href="{{url_for('character.index')}}">Volver al inicio</a></button></p>
+    </div>
+</div>
+
+{% endblock %}
