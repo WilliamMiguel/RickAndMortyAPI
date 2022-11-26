@@ -22,7 +22,7 @@ Instalar las dependencias que se encuentran en requirements.txt:
 pip install -r requirements.txt
 ```
 
-Crear un archivo **.env** con las siguientes variables:
+Crear un archivo **.env** afuera de la carpeta app con las siguientes variables:
 ```py
 FLASK_APP = main.py
 FLASK_DEBUG = True
