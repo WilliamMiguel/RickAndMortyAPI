@@ -3,7 +3,7 @@
 Trabajando con bases de datos no relacionales y Flask. Se muestran los personajes y un enlace a su perfil con algunos datos.
 
 ## Instalación
-Crear una carpeta e inicia VS Code dentro de ella, luego crear el entorno virtual ejecutando la siguiente línea:
+Crear una carpeta e iniciar VS Code dentro de ella, luego crear el entorno virtual ejecutando la siguiente línea:
 
 ```bash
 py -m venv env
