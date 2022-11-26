@@ -33,7 +33,7 @@ Ejecutar la siguiente línea de código dentro del entorno virtual
 ```python
 flask run
 ```
-Luego acceder al localhost: http://127.0.0.1:5000/
+Luego acceder al localhost: http://127.0.0.1:5000/ y hacer click en **Insertar personajes**
 
 ## Insertar personajes
 Para cambiar la cantidad de páginas de las cuales se extrae el personaje se debe modificar la **línea 16** del archivo **characters.py** ubicado en la **carpeta app**
