@@ -20,6 +20,14 @@ Instalar las dependencias que se encuentran en requirements.txt
 pip install -r requirements.txt
 ```
 
+Crear un archivo **.env** con las siguientes variables:
+```py
+FLASK_APP = main.py
+FLASK_DEBUG = True
+FLASK_ENV = development
+SECRET_KEY = #Ingresa una clave secreta
+```
+
 ## Uso
 Ejecutar la siguiente línea de código dentro del entorno virtual
 ```python
