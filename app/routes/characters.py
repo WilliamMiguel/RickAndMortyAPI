@@ -8,7 +8,7 @@ character = Blueprint('character',__name__)
 @character.route('/')
 def index():
     characters = db.characters.find()
-    noneCh = db.characters.find_one({"idRM": 1})
+    noneCh = db.characters.find_one()
     return render_template('index.html', characters = characters, noneCh = noneCh)
 
 @character.route('/insert')
