@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Capítulo - {{episode.name}}
+{% endblock %}
+
+{% block content %}
+<header style="font-size: 35px; padding: 0 100px;">
+    <h1>Capítulo: {{episode.name}}</h1>
+</header>
+
+<h1 style="text-align: center; color: white; font-size: 45px;">Personajes</h1>
+
+<div class="table-wrap">
+    <ul>
+    {% for character in episode.list_characters %}
+    
+        <li>{{character["name_character"]}}</li>
+
+    {% endfor %}
+</ul>
+</div>
+<div class="buttons">
+    <button>
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
+    </button>
+    <button>
+        <a href="{{url_for('character.listepisodes')}}"><i class="fa-solid fa-tv"></i> Regresar a capítulos</a>
+    </button>
+</div>
+
+
+{% endblock %}

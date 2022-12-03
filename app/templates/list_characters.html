@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Personajes
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Personajes</h1>
+</header>
+
+
+{% if noneCh == None %}
+<div class="buttons">
+    <p>No hay personajes insertados</p><br>
+    <button>
+        <a href="{{url_for('character.insertDB')}}"><i class="fa-solid fa-download"></i> Insertar datos</a>
+    </button> <br> <br>
+    <button>
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
+    </button>
+</div>
+
+{% else %}
+<div class="buttons">
+    <button>
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
+    </button>
+</div>
+<div class="container">
+    {% for character in characters %}
+    <a href="{{url_for('character.profile', idRM = character.idRM)}}">
+        <div class="card">
+            <div class="card-img">
+                <img src="https://rickandmortyapi.com/api/character/avatar/{{character.idRM}}.jpeg"
+                    alt="{{character.name}}">
+            </div>
+            <div class="card-body">
+                <div class="info">
+                    <h3 class="title">{{character.name}}</h3>
+                    <h4 class="subtitle">
+                        {% if character.status == "Alive" %}
+                        <span class="status-icon" style="background-color: rgb(5, 205, 5)"></span>
+                        {% elif character.status == "Dead" %}
+                        <span class="status-icon" style="background-color:rgb(250, 50, 50)""></span>
+                    {% else %}
+                    <span class=" status-icon" style="background-color:rgb(255, 237, 41)""></span>
+                    {% endif %}
+                        {{character.status}} - {{character.species}}</h4>
+                </div>
+        
+                <div class=" info">
+                            <span class="text-muted">Last know location:</span>
+                            <h5 class="text">{{character.location}}</h5>
+                </div>
+                <div class="info">
+                    <span class="text-muted">First seen in:</span>
+                    <h5 class="text">{{character.list_episodes[0]["name_episode"]}}</h5>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}

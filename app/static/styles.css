@@ -1,43 +1,225 @@
 *{
   box-sizing: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
+body{
+  background-color: #000000;
+}
 
 .container{
   display: flex;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: auto;
-  text-align: center;
-  height: 100%;
-  border-radius: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
 }
 
-.card-image{
+.table{
+  color: black;
+}
+
+.card{
+  display: flex;
+  height: 220px;
+  width: 600px;
+  background-color: #004e63;
+  border-radius: 10px;
+  align-items: center;
+  overflow: hidden;
+  margin: 1rem;
+}
+
+.card-img{
   width: 40%;
 }
 
-.card-image img{
-  height: 100%;
+.card-img img{
   width: 100%;
-  border-radius: 15px 0 0 15px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 60%;
+  height: 100%;
+  position: relative;
+  justify-content: center;
+}
+
+img{
+  width: 100%;
 }
 
 .info{
-  text-align: left;
-  background-color: rgb(23, 23, 23);
-  color: white;
   display: flex;
   flex-direction: column;
-  width: 60%;
-  border-radius: 0 15px 15px 0;
-  padding: 30px;
-  font-size: 1em;
+  flex: 1 1 0%;
+  justify-content: center;
 }
 
-.name{
+.info:first-child{
+  justify-content: flex-start;
+}
+
+.info:last-child{
+  justify-content: flex-end;
+}
+
+.status-icon{
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.375rem;
+  border-radius: 50%;
+}
+
+.title{
+  font-size: 27px;
+  font-weight:1000;
+}
+
+.subtitle{
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.text{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.text-muted{
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(141, 138, 138);
+}
+
+.buttons{
   color: white;
-  text-align: left;
-  margin: 0;
-  font-size: 2.5em;
+  text-align: center;
+  font-size: 25px;
+  margin: 30px 0;
+}
+
+.sticky{
+  position: sticky;
+  top: 40vh;
+  height: 0px;
+}
+
+.sticky a{
+  color: black;
+}
+
+.buttons button, .sticky button{
+  background-color: rgb(242, 242, 68);
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 20px;
+}
+
+.buttons a{
+  color: black;
+  font-weight: 600;
+}
+
+table{
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+  
+}
+
+.table-wrap ul{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 80px;
+  align-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  
+}
+
+.table-wrap li{
+  padding: 15px;
+  border: 1px solid black;
+  background-color: #004e63;
+  color: white ;
+  text-align: center;
+  flex: 2 1 30%;
+}
+
+.card-profile{
+  display: flex;
+  flex-direction: column;
+}
+
+.body-profile{
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.body-profile .info{
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.body-profile .info:first-child{
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
+.body-profile .info:last-child{
+  justify-content: flex-start;
+}
+
+table a, thead th, tr{
+  color: rgb(255, 255, 255);
+}
+
+.body-profile .text{
+  font-size: 23px;
+}
+
+.body-profile .text-muted{
+  font-size: 20px;
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+th{
+  background-color: #666666;
+}
+
+td{
+  background-color: #004e63;
+}
+
+
+h2,h3,h4,h5,h6{
+  margin: 0px;
+  color: white;
+}
+
+header{
+  font-family: 'Blinker', sans-serif;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+}
+
+header h1{
+  margin: 50px 0;
 }

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{character.name}}
+{% endblock %}
+
+{% block content %}
+<div class="sticky">
+    <button style="width: 60px;">
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i></a>
+    </button>
+    <br>
+    <button style="width: 60px;">
+        <a href="{{url_for('character.listcharacters')}}"><i class="fa-solid fa-person-running"></i></a>
+    </button>
+</div>
+
+
+<header>
+    <h1 style="margin: 20px 0;">{{character.name}}</h1>
+</header>
+
+<div class="container">
+    <div class="card-profile">
+        <div>
+            <img class="img-profile" src="https://rickandmortyapi.com/api/character/avatar/{{character.idRM}}.jpeg"
+                alt="{{character.name}}">
+        </div>
+        <div class="body-profile">
+            <div class=" info">
+                <span class="text-muted">Clase:</span>
+                {% if character.type == "" %}
+                <h5 class="text">Unidentified</h5>
+                {% else %}
+                <h5 class="text">{{character.type}}</h5>
+                {% endif %}
+            </div>
+            <div class="info">
+                <span class="text-muted">Género:</span>
+                <h5 class="text">{{character.gender}}</h5>
+            </div>
+            <div class="info">
+                <span class="text-muted">Origen:</span>
+                <h5 class="text">{{character.origin}}</h5>
+            </div>
+
+            <div class="info">
+                <span class="text-muted">Aparece en los capítulos:</span>
+                <ul class="text">
+                    {% for episode in character.list_episodes %}
+                    <li>
+                        {{episode["id_episode"]}} - {{episode["name_episode"]}}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

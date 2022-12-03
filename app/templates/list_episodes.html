@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Lista de capítulos
+{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Capítulos</h1>
+</header>
+
+{% if noneEp == None %}
+<div class="buttons">
+    <p>No hay capítulos insertados</p><br>
+    <button>
+        <a href="{{url_for('character.insertDB')}}"><i class="fa-solid fa-download"></i> Insertar datos</a>
+    </button> <br> <br>
+    <button>
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
+    </button>
+</div>
+
+{% else %}
+<div class="buttons">
+    <button>
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
+    </button>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <th>Capítulo</th>
+            <th>Nombre</th>
+        </thead>
+        <tbody>
+            {% for episode in episodes %}
+            <tr>
+                <td>{{episode.idE}}</td>
+                <td><a href="{{url_for('character.episode', id = episode.idE)}}">{{episode.name}}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+
+{% endblock %}

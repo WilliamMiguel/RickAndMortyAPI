@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Inicio - Proyecto Unidad 3
+{% endblock %}
+
+{% block content %}
+
+{{episode}}
+
+<header>
+    <h1>Proyecto final</h1>
+</header>
+
+{% if noneDB == False %}
+
+<h1 style="text-align: center; color: white; font-size: 45px;">No hay datos de personajes ni capítulos</h1>
+<div class="buttons">
+    <button>
+        <a href="{{url_for('character.insertDB')}}"><i class="fa-solid fa-download"></i> Insertar personajes y
+            capítulos</a>
+    </button>
+</div>
+
+{% else %}
+
+<div class="buttons">
+    <button>
+        <a href="{{url_for('character.listcharacters')}}"><i class="fa-solid fa-person-running"></i> Ver personajes</a>
+    </button>
+    <button>
+        <a href="{{url_for('character.listepisodes')}}"><i class="fa-solid fa-tv"></i> Ver capítulos</a>
+    </button>
+</div>
+
+{% endif %}
+
+{% endblock %}
