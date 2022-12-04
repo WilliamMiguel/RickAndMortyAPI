@@ -110,3 +110,4 @@ characters = db.characters.find().sort("idRM", -1)
 ## Insertar personajes
     
 Para obtener todos los datos es necesario ejecutar toda la función <code>insertDB</code>
+https://github.com/WilliamMiguel/RickAndMortyAPI/blob/a425109e025e7e665440eee24bdac7c77f58e569/app/routes/characters.py#L19
