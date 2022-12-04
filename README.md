@@ -1,8 +1,6 @@
 # Rick and Morty - MongoDB
 
-Trabajando con bases de datos no relacionales y Flask. 
-
-Se muestra una página con los personajes y un enlace a su perfil con algunos datos.
+Proyecto con Flask y MongoDB usando la API "Rick and Morty" (https://rickandmortyapi.com)
 
 ## Instalación
 Crear una carpeta e iniciar VS Code dentro de ella, luego crear el entorno virtual ejecutando la siguiente línea:
@@ -32,18 +30,21 @@ SECRET_KEY = #Ingresa una clave secreta
 
 ## Uso
 
-### Insertar personajes
-Para cambiar la cantidad de páginas de las cuales se extraen los personajes se debe modificar la **línea 16** del archivo **characters.py** ubicado en la **carpeta app**:
-
-```python
-#for page in range ("desde la página 1, hasta la página 21")
-for page in range (1,22)
-```
-
 Ejecutar la siguiente línea de código dentro del entorno virtual:
 ```python
 flask run
 ```
 
-Luego acceder al localhost: http://127.0.0.1:5000/ y hacer click en **Insertar personajes** para crear la base de datos, posteriormente no se mostrará esta opción.
+### Insertando los personajes
 
+Luego acceder al localhost: http://127.0.0.1:5000/ y hacer click en **Insertar personajes** para crear la base de datos, posteriormente no se mostrará esta opción. De esta forma se cargan todos los personajes, episodios y locaciones.
+
+La función <code>insertDB</code> realiza este procedimiento mediante los siguientes pasos:
+1. Crea la colección <code>characters</code>.
+2. Crea la colección <code>episodes</code>.
+3. Crea la colección <code>locations</code>.
+4. En la colección <code>characters</code>, se rellena la clave <code>name_episode</code> del campo <code>list_episodes</code>
+5. En la colección <code>episodes</code>, se rellena la clave <code>name_character</code> del campo <code>list_characters</code>
+6. En la colección <code>locations</code>, se rellena la clave <code>name_character</code> del campo <code>list_characters</code>
+
+Primero se crean las 3 colecciones para evitar realizar <code>requests</code> en cada personaje debido a que el tiempo de espera se extiende. Posteriormente se rellenan los campos trayendo los datos necesarios de cada colección.
