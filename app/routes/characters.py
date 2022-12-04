@@ -79,7 +79,7 @@ def insertDB():
 
     #Actualización de campos        
 
-    # Rellenar el campo "list_episodes". Colección: Characters
+    # Rellenar el campo "list_episodes["name_episodes"]". Colección: Characters
     characters = db.characters.find()
     noneCh = db.characters.find_one()
     if noneCh is None:
@@ -102,7 +102,7 @@ def insertDB():
             
             db.characters.update_one({"idRM": idch}, {"$set": {"dimension": name_dimension}})
 
-    # Rellenar el campo "list_characters" en cada capítulo. Colección: Episodes
+    # Rellenar el campo "list_characters["name_character"]" en cada capítulo. Colección: Episodes
     episodes = db.episodes.find()
     noneEp = db.episodes.find_one()
     if noneEp is None:
@@ -117,7 +117,7 @@ def insertDB():
                 db.episodes.update_one({"name": nameEpisode}, {"$set": {"list_characters." + str(count) + ".name_character": name_character}})
                 count += 1
     
-    # Rellenar el campo "list_characters" en cada location. Colección: Locations
+    # Rellenar el campo "list_characters["name_character"]" en cada location. Colección: Locations
     locations = db.locations.find()
     noneLc = db.locations.find_one()
     if noneLc is None:
@@ -145,7 +145,7 @@ def profile(idRM):
     character = db.characters.find_one({"idRM": int(idRM)})
     episodes = db.episodes.find({}, {"idE": 1, "name": 1})
     if character is None:
-        return "<h1>No encontrado</h1>"
+        return render_template('E404.html')
 
     return render_template('character.html', character=character, episodes=episodes)
 
@@ -158,7 +158,11 @@ def listepisodes():
 @character.route('/episodes/<id>')
 def episode(id):
     episode = db.episodes.find_one({"idE": int(id)})
+    characters = db.characters.find()
     if episode is None:
-        return "<h1>No encontrado</h1>"
+        return render_template('E404.html')
 
-    return render_template('episode.html', episode=episode)
+    return render_template('episode.html', episode=episode, characters = characters)
+
+def status_404(e):
+    return render_template('E404.html'), 404

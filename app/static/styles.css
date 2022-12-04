@@ -92,6 +92,7 @@ img{
 .text{
   font-size: 20px;
   font-weight: 600;
+  text-transform: capitalize;
 }
 
 .text-muted{
@@ -115,6 +116,10 @@ img{
 
 .sticky a{
   color: black;
+}
+
+.sticky button:hover{
+  background-color: white;
 }
 
 .buttons button, .sticky button{
@@ -192,6 +197,8 @@ table a, thead th, tr{
   font-size: 20px;
 }
 
+
+
 th, td {
   padding: 15px;
   border: 1px solid white;
@@ -200,7 +207,7 @@ th, td {
 }
 
 th{
-  background-color: #666666;
+  background-color: #054ba1;
 }
 
 td{

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Página no encontrada
+{% endblock %}
+
+{% block content %}
+
+<header>
+    <h1>Página no encontrada</h1>
+</header>
+
+<div class="buttons">
+    <button>
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
+    </button>
+</div>
+
+{% endblock %}

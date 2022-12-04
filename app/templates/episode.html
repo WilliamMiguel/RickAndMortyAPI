@@ -9,24 +9,40 @@ Capítulo - {{episode.name}}
     <h1>Capítulo: {{episode.name}}</h1>
 </header>
 
-<h1 style="text-align: center; color: white; font-size: 45px;">Personajes</h1>
-
-<div class="table-wrap">
-    <ul>
-    {% for character in episode.list_characters %}
-    
-        <li>{{character["name_character"]}}</li>
-
-    {% endfor %}
-</ul>
+<div class="sticky">
+    <button style="width: 60px;">
+        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i></a>
+    </button>
+    <br>
+    <button style="width: 60px;">
+        <a href="{{url_for('character.listepisodes')}}"><i class="fa-solid fa-tv"></i></a>
+    </button>
 </div>
-<div class="buttons">
-    <button>
-        <a href="{{url_for('character.home')}}"><i class="fa-solid fa-house"></i> Regresar al inicio</a>
-    </button>
-    <button>
-        <a href="{{url_for('character.listepisodes')}}"><i class="fa-solid fa-tv"></i> Regresar a capítulos</a>
-    </button>
+
+<div class="container">
+    {% for character in episode.list_characters %}
+    <div class="card">
+        <div class="card-img">
+            <img src='https://rickandmortyapi.com/api/character/avatar/{{character["id_character"]}}.jpeg'
+                alt="{{character.name}}">
+        </div>
+        <div class="card-body">
+            <div class="info">
+                <h3 class="title">{{character["name_character"]}}</h3>
+                <h4 class="subtitle">{{characters[character["id_character"]|int - 1].species}}</h4>
+            </div>
+    
+            <div class=" info">
+                        <span class="text-muted">Origin:</span>
+                        <h5 class="text">{{characters[character["id_character"]|int - 1].origin}}</h5>
+            </div>
+            <div class="info">
+                <span class="text-muted">Dimension:</span>
+                <h5 class="text">{{characters[character["id_character"]|int - 1].dimension}}</h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 
