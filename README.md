@@ -106,3 +106,30 @@ Esta query permite ordenar los datos de acuerdo a un campo seleccionado de maner
 ```python
 characters = db.characters.find().sort("idRM", -1)
 ```
+
+## Insertar personajes
+
+```python
+#Insert - Personajes
+for page in range(1, 43):
+    url = "https://rickandmortyapi.com/api/character?page=" + str(page)
+    infoCharacter = requests.get(url).json()["results"]
+    for info in infoCharacter:
+        _id = info["id"]
+        name = info["name"]
+        status = info["status"]
+        species = info["species"]
+        _type = info["type"]
+        gender = info["gender"]
+        origin = info["origin"]["name"]
+        location = info["location"]["name"]
+        list_episodes = []
+        for episode in info["episode"]:
+            dict_episodes = {}
+            dict_episodes["id_episode"] = episode.split("/")[-1]
+            dict_episodes["name_episode"] = ""
+            list_episodes.append(dict_episodes)
+
+        character = Character(_id, name, status, species, _type, gender, origin, location, list_episodes)
+        db.characters.insert_one(character.to_json())
+```
