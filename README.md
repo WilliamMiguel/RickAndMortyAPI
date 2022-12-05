@@ -40,7 +40,7 @@ Luego acceder al localhost: http://127.0.0.1:5000/ y hacer click en **Insertar p
 
 ### app/routes/characters.py
 
-- Se inicia importanto las librerías o clases necesarias y posteriormente se asigna un nuevo nombre a la app: characters
+- Se inicia importando las librerías o clases necesarias y posteriormente se asigna un nuevo nombre a la app: characters
 - Se definen las rutas y funciones:
     - <code>'/'</code>: página principal.
     - <code>'/insert-db</code>: inserta la base de datos, colecciones y documentos. Tiene dos partes, en la primera crea las colecciones: <code>characters</code>,                  <code>episodes</code> y <code>locations</code>, y en la segunda actualiza algunos valores de sus campos.
