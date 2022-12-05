@@ -1,6 +1,6 @@
 # Rick and Morty - MongoDB
 
-Proyecto con Flask y MongoDB usando la API "Rick and Morty" (https://rickandmortyapi.com)
+Proyecto con Flask y MongoDB usando la API [Rick and Morty](https://rickandmortyapi.com)
 
 ## Instalación
 Crear una carpeta e iniciar VS Code dentro de ella, luego crear el entorno virtual ejecutando la siguiente línea:
