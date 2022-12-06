@@ -43,11 +43,11 @@ Luego acceder al localhost: http://127.0.0.1:5000/ y hacer click en **Insertar p
 - Se inicia importando las librerías o clases necesarias y posteriormente se asigna un nuevo nombre a la app: characters
 - Se definen las rutas y funciones:
     - <code>'/'</code>: página principal.
-    - <code>'/insert-db</code>: inserta la base de datos, colecciones y documentos. Tiene dos partes, en la primera crea las colecciones: <code>characters</code>,                  <code>episodes</code> y <code>locations</code>, y en la segunda actualiza algunos valores de sus campos.
+    - <code>'/insert-db</code>: crea la base de datos, inserta las colecciones y documentos. Tiene dos partes principales, en la primera crea las colecciones: <code>characters</code>, <code>episodes</code> y <code>locations</code>, y en la segunda actualiza algunos valores de sus campos. Se desarrolló de esta manera ya que al importar los datos con <code>requests</code> dentro de cada bucle <code>for</code> el tiempo de espera aumentaba.
     - <code>'/characters'</code>: muestra la lista de personajes.
     - <code>'/characters/<idRM>'</code>: muestra el perfil de un personaje.
-    - <code>'/episodes'</code>: muestra la lista de capítulos.
-    - <code>'/episodes/<id>'</code>: muestra los personajes en un capítulo.
+    - <code>'/capitulos'</code>: muestra la lista de capítulos.
+    - <code>'/capitulos/<id>'</code>: muestra los personajes en un capítulo.
 
 ### app/models
 
@@ -62,7 +62,7 @@ Cada una tiene su constructor y un método que convierte los parámetros a forma
 
 ### db.COLLECTION.find()
 
-Esta query se ha usado para obtener todos los documentos de la colección, por ejemplo, en la **línea 83** del archivo **characters.py**:
+Esta query se ha usado para obtener todos los documentos de la colección. Por ejemplo, en la **línea 83** del archivo **characters.py**:
 
 ```python
 characters = db.characters.find()
@@ -75,7 +75,7 @@ Esta query se ha usado para saber si la colección está vacía, de tal manera q
 ```python
 name_episode = db.episodes.find_one({"idE": int(episode["id_episode"])}, {"name": 1})["name"]
 ```
-En donde extraemos el nombre de un capítulo.
+En donde se extrae el nombre de un capítulo en base a su <code>idE</code>.
 
 ### db.COLLECTION.insert_one(json)
 
@@ -84,7 +84,7 @@ Esta query se ha usado para insertar un documento en la colección, agregando as
 ```python
 db.characters.insert_one(character.to_json())
 ```
-Se inserta una instacia a la colección characters.
+Se inserta un documento a la colección characters.
 
 ### db.COLLECTION.update_one(filter, new_values)
 
@@ -101,7 +101,7 @@ db.characters.update_one({"idRM": idch}, {"$set": {"list_episodes." + str(count)
 
 ### db.COLLECTION.find().sort(field, order)
 
-Esta query permite ordenar los datos de acuerdo a un campo seleccionado de manera ascendente (default) 1 o descendente -1, por ejemplo en la **línea 139** del archivo **characters.py**:
+Esta query permite ordenar los datos de acuerdo a un campo seleccionado de manera ascendente (default) 1 o descendente -1, por ejemplo en la **línea 139** del archivo **characters.py** se ordenan los personajes descendentemente de acuerdo a su <code>idRM</code>
 
 ```python
 characters = db.characters.find().sort("idRM", -1)
@@ -110,4 +110,7 @@ characters = db.characters.find().sort("idRM", -1)
 ## Insertar personajes
     
 Para obtener todos los datos es necesario ejecutar toda la función <code>insertDB</code>
+
 https://github.com/WilliamMiguel/RickAndMortyAPI/blob/973bf92deec8596fa1084cebb94e6813327d403e/app/routes/characters.py#L19-L135
+
+Que se encuentra en la ruta antes mencionada (<code>'/insert-db</code>).

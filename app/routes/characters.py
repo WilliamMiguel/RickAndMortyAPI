@@ -149,13 +149,13 @@ def profile(idRM):
 
     return render_template('character.html', character=character, episodes=episodes)
 
-@character.route('/episodes')
+@character.route('/capitulos')
 def listepisodes():
     episodes = db.episodes.find().sort("idE")
     noneEp = db.episodes.find_one()
     return render_template('list_episodes.html', episodes=episodes, noneEp=noneEp)
 
-@character.route('/episodes/<id>')
+@character.route('/capitulos/<id>')
 def episode(id):
     episode = db.episodes.find_one({"idE": int(id)})
     characters = db.characters.find()
