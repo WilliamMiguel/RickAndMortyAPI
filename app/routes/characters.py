@@ -18,7 +18,8 @@ def home():
 @character.route('/insert-db')
 def insertDB():
     #Insert - Personajes
-    for page in range(1, 43):
+    all_pages = int(requests.get("https://rickandmortyapi.com/api/character").json()["info"]["pages"]) + 1
+    for page in range(1, all_pages):
         url = "https://rickandmortyapi.com/api/character?page=" + str(page)
         infoCharacter = requests.get(url).json()["results"]
         for info in infoCharacter:
@@ -41,7 +42,8 @@ def insertDB():
             db.characters.insert_one(character.to_json())
 
     #Insert - Capítulos
-    for page in range(1, 4):
+    all_episodes = int(requests.get("https://rickandmortyapi.com/api/episode").json()["info"]["pages"]) + 1
+    for page in range(1, all_episodes):
         url = "https://rickandmortyapi.com/api/episode?page=" + str(page)
         infoEpisode = requests.get(url).json()["results"]
         for info in infoEpisode:
@@ -59,7 +61,8 @@ def insertDB():
             db.episodes.insert_one(episode.to_json())
 
     #Insert - Locations
-    for page in range(1, 8):
+    all_locations = int(requests.get("https://rickandmortyapi.com/api/location").json()["info"]["pages"]) + 1
+    for page in range(1, all_locations):
         url = "https://rickandmortyapi.com/api/location?page=" + str(page)
         infoLocation = requests.get(url).json()["results"]
         for info in infoLocation:
