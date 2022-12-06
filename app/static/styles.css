@@ -89,6 +89,14 @@ img{
   text-transform: capitalize;
 }
 
+.card .text{
+  font-size: 19px;
+}
+
+.card .text-muted{
+  font-size: 15px;
+}
+
 .text{
   font-size: 20px;
   font-weight: 600;
@@ -118,7 +126,8 @@ img{
   color: black;
 }
 
-.sticky button:hover{
+.sticky button:hover,
+.buttons button:hover{
   background-color: white;
 }
 
@@ -196,8 +205,6 @@ table a, thead th, tr{
 .body-profile .text-muted{
   font-size: 20px;
 }
-
-
 
 th, td {
   padding: 15px;

@@ -6,7 +6,7 @@ Capítulo - {{episode.name}}
 
 {% block content %}
 <header style="font-size: 35px; padding: 0 100px;">
-    <h1>Capítulo: {{episode.name}}</h1>
+    <h1>Capítulo {{episode.idE}}: {{episode.name}}</h1>
 </header>
 
 <div class="sticky">
@@ -21,27 +21,36 @@ Capítulo - {{episode.name}}
 
 <div class="container">
     {% for character in episode.list_characters %}
-    <div class="card">
-        <div class="card-img">
-            <img src='https://rickandmortyapi.com/api/character/avatar/{{character["id_character"]}}.jpeg'
-                alt="{{character.name}}">
+    <a href="{{url_for('character.profile', idRM = character.id_character)}}">
+        <div class="card">
+            <div class="card-img">
+                <img src='https://rickandmortyapi.com/api/character/avatar/{{character["id_character"]}}.jpeg'
+                    alt="{{character.name}}">
+            </div>
+            <div class="card-body">
+                <div class="info">
+                    <h3 class="title">{{character["name_character"]}}</h3>
+                </div>
+                <div class=" info">
+                    <span class="text-muted">Especie - Tipo</span>
+                    <h5 class="text">{{characters[character["id_character"]|int - 1].species}} -
+                        {% if characters[character["id_character"]|int - 1].type == "" %}
+                        Undefined </h5>
+                    {% else %}
+                    {{characters[character["id_character"]|int - 1].type}} </h5>
+                    {% endif %}
+                </div>
+                <div class=" info">
+                    <span class="text-muted">Origin:</span>
+                    <h5 class="text">{{characters[character["id_character"]|int - 1].origin}}</h5>
+                </div>
+                <div class="info">
+                    <span class="text-muted">Dimension:</span>
+                    <h5 class="text">{{characters[character["id_character"]|int - 1].dimension}}</h5>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="info">
-                <h3 class="title">{{character["name_character"]}}</h3>
-                <h4 class="subtitle">{{characters[character["id_character"]|int - 1].species}}</h4>
-            </div>
-    
-            <div class=" info">
-                        <span class="text-muted">Origin:</span>
-                        <h5 class="text">{{characters[character["id_character"]|int - 1].origin}}</h5>
-            </div>
-            <div class="info">
-                <span class="text-muted">Dimension:</span>
-                <h5 class="text">{{characters[character["id_character"]|int - 1].dimension}}</h5>
-            </div>
-        </div>
-    </div>
+    </a>
     {% endfor %}
 </div>
 
